@@ -1,4 +1,6 @@
 spring:
+  profile:
+    active: default
   application:
     name: jwt-security-auth
   config:
