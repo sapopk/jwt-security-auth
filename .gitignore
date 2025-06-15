@@ -34,4 +34,4 @@ build/
 
 ### resources ###
 src/main/resources/development/
-src/main/resources/config/application-dev.yaml
+src/main/resources/application.yaml
