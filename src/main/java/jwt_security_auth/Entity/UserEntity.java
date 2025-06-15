@@ -7,8 +7,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Date;
+import java.util.List;
 
 @Setter
 @Getter
@@ -16,7 +18,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @Table(name = "users")
-public class UserEntity {
+public class UserEntity implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,4 +44,11 @@ public class UserEntity {
     @UpdateTimestamp
     @Column(name = "updated_at")
     private Date updatedAt;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "user_role")
+    private Role role;
+
+    @OneToMany(mappedBy = "user")
+    private List<Token> token;
 }
